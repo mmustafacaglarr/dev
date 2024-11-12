@@ -1,15 +1,37 @@
 # What is this?
 
-The github.dev web-based editor is a lightweight editing experience that runs entirely in your browser. You can navigate files and source code repositories from GitHub, and make and commit code changes.
+version 1:
+I quickly completed the ping part which was an exercise in the first version because it is similar to udp. I made progress in multithreading but now I am getting a strange error:
+it seems to be a problem with socket usage, I am working on it.
 
-There are two ways to go directly to a VS Code environment in your browser and start coding:
+➜  NetworkApplications sudo python3 NetworkApplicationsSrcFinal.py mtroute -p icmp uni-leipzig.de
 
-* Press the . key on any repository or pull request.
-* Swap `.com` with `.dev` in the URL. For example, this repo https://github.com/github/dev becomes http://github.dev/github/dev
+Password:
+Exception in thread Thread-1 (send_probes):
+Exception in thread Thread-2 (receive_responses):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/threading.py", line 1052, in _bootstrap_inner
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/threading.py", line 1052, in _bootstrap_inner
+    self.run()
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/threading.py", line 989, in run
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/threading.py", line 989, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/mustafacaglar/PycharmProjects/NetworkApplications/NetworkApplicationsSrcFinal.py", line 639, in receive_responses
+    self._target(*self._args, **self._kwargs)
+  File "/Users/mustafacaglar/PycharmProjects/NetworkApplications/NetworkApplicationsSrcFinal.py", line 611, in send_probes
+    trReplyPacket, hopAddr, timeRecvd = self.receiveOneTraceRouteResponse()
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    timeSent = self.sendOnePing(destinationAddress, packetID, seq_num, ttl, dataLength=52)
+  File "/Users/mustafacaglar/PycharmProjects/NetworkApplications/NetworkApplicationsSrcFinal.py", line 534, in receiveOneTraceRouteResponse
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mustafacaglar/PycharmProjects/NetworkApplications/NetworkApplicationsSrcFinal.py", line 297, in sendOnePing
+    pkt, addr = self.icmpSocket.recvfrom(MAX_DATA_RECV)
+                ^^^^^^^^^^^^^^^
+AttributeError: 'MultiThreadedTraceRoute' object has no attribute 'icmpSocket'
+    self.icmpSocket.setsockopt(socket.SOL_IP, socket.IP_TTL, ttl)
+    ^^^^^^^^^^^^^^^
+AttributeError: 'MultiThreadedTraceRoute' object has no attribute 'icmpSocket'
 
-Preview the gif below to get a quick demo of github.dev in action.
-
-![github dev](https://user-images.githubusercontent.com/856858/130119109-4769f2d7-9027-4bc4-a38c-10f297499e8f.gif)
-
-# Why?
-It’s a quick way to edit and navigate code. It's especially useful if you want to edit multiple files at a time or take advantage of all the powerful code editing features of Visual Studio Code when making a quick change. For more information, see our [documentation](https://github.co/codespaces-editor-help).
+one of the errors I get is like this
